@@ -14,6 +14,7 @@ import (
 // FetchMostPopularVideos Youtubeの人気動画を取得する
 func FetchMostPopularVideos() echo.HandlerFunc {
 	return func(c echo.Context) error {
+		yts := c.Get("yts").(*youtube.Service)
 		key := os.Getenv("API_KEY") // 1
 
 		ctx := context.Background()
