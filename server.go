@@ -21,12 +21,14 @@ func init() {
 }
 
 func main() {
-	e := echo.New() // 1
+	e := echo.New()
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.CORS())
 	e.Use(middlewares.YouTubeService())
+	e.Use(middlewares.DatabaseService())
+	e.Use(middlewares.Firebase())
 
 	routes.Init(e)
-	e.Logger.Fatal(e.Start(":8080")) // 2
+	e.Logger.Fatal(e.Start(":8080"))
 }
